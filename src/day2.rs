@@ -185,11 +185,11 @@ pub mod part2 {
                 break;
             }
             verb = verb + 1;
-            if (verb == 100) {
+            if verb == 100 {
                 noun = noun + 1;
                 verb = 0;
             }
-            if (noun == 100) {
+            if noun == 100 {
                 println!("no solution found");
                 break;
             }
