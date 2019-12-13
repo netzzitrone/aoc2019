@@ -63,6 +63,11 @@ pub mod part1 {
             1,13,143,0,
             99,
             2,0,14,0];
+
+        //1202 program alarm state
+        intcode[1] = 12;
+        intcode[2] = 2;
+
         let mut pc = 0;
         let mut instruction_line = 0;
         let mut opcode:u32 = intcode[pc];
@@ -75,7 +80,7 @@ pub mod part1 {
                 let operand2:usize = intcode[pc+2]  as usize;
                 let dest:usize = intcode[pc+3]  as usize;
                 intcode[dest] = intcode[operand1] + intcode[operand2];
-                println!(" add {}({}) and {}({}) to {} ", intcode[operand1], operand1, intcode[operand2], operand2, dest);
+                //println!(" add {}({}) and {}({}) to {} ", intcode[operand1], operand1, intcode[operand2], operand2, dest);
 
             }
             else if opcode == OPCODE_MUL {
@@ -83,15 +88,13 @@ pub mod part1 {
                 let operand2:usize = intcode[pc+2] as usize;
                 let dest:usize = intcode[pc+3] as usize;
                 intcode[dest] = intcode[operand1] * intcode[operand2];
-                println!(" mul {}({}) and {}({}) to {} ", intcode[operand1], operand1, intcode[operand2], operand2, dest);
+                //println!(" mul {}({}) and {}({}) to {} ", intcode[operand1], operand1, intcode[operand2], operand2, dest);
 
             }
             pc = pc + 4;
             opcode = intcode[pc];
 
         }
-
         println!("{:?}", intcode);
-        //1450628 is to low
     }
 }
