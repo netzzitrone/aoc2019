@@ -1,4 +1,4 @@
-
+#[allow(dead_code)]
 pub mod part1 {
     use std::fs::File;
     use std::io::BufReader;
@@ -20,7 +20,7 @@ pub mod part1 {
         println!("Fuel {}",all_fuel);
     }
 }
-
+#[allow(dead_code)]
 pub mod part2 {
     use std::fs::File;
     use std::io::BufReader;
