@@ -12,13 +12,13 @@ pub mod part1 {
     }
 
 
-    #[derive(PartialEq, Eq, Hash)]
+  /*  #[derive(PartialEq, Eq, Hash)]
     enum CellState {
         Empty,
         Wire1,
         Wire2,
         Intersect
-    }
+    }*/
 
     type Field = HashMap<Point, usize>;
 
@@ -155,6 +155,7 @@ pub mod part1 {
     }
 }
 
+#[allow(dead_code)]
 pub mod part2 {
     use std::fs::File;
     use std::io::BufReader;
@@ -168,18 +169,18 @@ pub mod part2 {
     }
 
 
-    #[derive(PartialEq, Eq, Hash)]
+  /*  #[derive(PartialEq, Eq, Hash)]
     enum CellState {
         Empty,
         Wire1,
         Wire2,
         Intersect
-    }
-
+    }*/
+    #[allow(dead_code)]
     type Field = HashMap<Point, usize>;
 
 
-
+    #[allow(dead_code)]
     fn draw_line (instruction: &str, x:i16, y:i16, fields:Field, wire:usize, wire_count:i32, intersect_length: bool, intersect_x:i16, intersect_y:i16, wire_sum:i32 ) -> (i16, i16, Field, i32, i32) {
         let mut instruction: String = instruction.into();
         let mut fields= fields;
