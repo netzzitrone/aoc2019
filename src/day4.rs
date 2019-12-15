@@ -100,3 +100,77 @@ pub mod part1 {
         assert_eq!(check_password(777999), true);
     }
 }
+
+#[allow(dead_code)]
+pub mod part2 {
+
+    //https://stackoverflow.com/questions/41536479/splitting-an-integer-into-individual-digits
+    fn int_to_digits(n: i32) -> Vec<i32> {
+        fn x_inner(n: i32, xs: &mut Vec<i32>) {
+            if n >= 10 {
+                x_inner(n / 10, xs);
+            }
+            xs.push(n % 10);
+        }
+        let mut xs = Vec::new();
+        x_inner(n, &mut xs);
+        xs
+    }
+
+    fn check_password(password: i32) -> bool {
+
+        let digits = int_to_digits(password);
+        let mut doubles = false;
+        let mut count_doubles = 0;
+
+        for n in 0..5 {
+            if digits[n] == digits[n+1] {
+                count_doubles = count_doubles +1;
+            }
+            else {
+                if count_doubles == 1 {
+                    doubles = true;
+                }
+                count_doubles = 0;
+            }
+        }
+
+        if doubles == false &&  count_doubles != 1 {
+            return false;
+        }
+
+        //rule: never decrease
+        let mut smaller_digit = 0;
+        for digit in digits {
+            if smaller_digit <= digit {
+                smaller_digit = digit;
+            }
+            else {
+                return false;
+            }
+        }
+        //println!("{}", password);
+        return true;
+    }
+
+
+    pub fn run() {
+        let range_from = 382345;
+        let range_to = 843167;
+        let mut valid_counter = 0;
+        for i in range_from+1..range_to {
+            if check_password(i) == true {
+                valid_counter += 1;
+            }
+        }
+        println!("{} valid passwords in range", valid_counter);
+        //215 is to low
+    }
+
+    #[test]
+    fn check_password_test() {
+        assert_eq!(check_password(112233), true);
+        assert_eq!(check_password(123444), false);
+        assert_eq!(check_password(111122), true);
+    }
+}
